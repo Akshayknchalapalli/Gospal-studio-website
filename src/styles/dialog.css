@@ -1,0 +1,26 @@
+.dialog { width: min(100% - 2rem, 38rem); padding: clamp(1rem, 3vw, 1.75rem); max-height: calc(100dvh - 2rem); border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface-card); color: var(--text); box-shadow: 0 1.2rem 3rem var(--shadow-color); }
+.dialog[open] { animation: dialog-in var(--medium) var(--ease-out) both; }
+.dialog::backdrop { background: var(--overlay); }
+.dialog-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.dialog-header h2 { font-size: clamp(1.6rem, 5vw, 2.6rem); letter-spacing: -.06em; }
+.poster-dialog { width: min(100% - 2rem, 60rem); }
+.poster-dialog > img { margin-inline: auto; max-height: calc(100dvh - 9rem); object-fit: contain; }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+.enquiry label, .enquiry legend { font-size: .94rem; font-weight: 800; }
+.enquiry label > span, .enquiry legend > span { color: var(--text-muted); font-weight: 650; }
+.enquiry input:not([type='checkbox']), .enquiry select, .enquiry textarea { display: block; width: 100%; min-height: 2.75rem; margin-top: .25rem; padding: .5rem .7rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); font-size: 1rem; font-weight: 550; }
+.enquiry textarea { resize: vertical; }
+.enquiry fieldset { padding: 0; border: 0; margin: .9rem 0; }
+.service-options { display: flex; gap: .45rem; flex-wrap: wrap; margin-top: .3rem; }
+.service-options .option { display: inline-flex; align-items: center; gap: .25rem; min-height: 2.1rem; border: 1px solid var(--border); border-radius: var(--radius-pill); padding: .22rem .55rem; font-size: .875rem; cursor: pointer; }
+.service-options .option:has(input:checked) { background: var(--accent); border-color: var(--accent); }
+.service-options input { accent-color: var(--accent-text); }
+.enquiry .button { margin-top: .9rem; }
+.form-note { margin-top: .45rem; font-size: .875rem; color: var(--text-muted); }
+@keyframes dialog-in {
+  from { opacity: 0; transform: translateY(.75rem) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (max-width: 430px) {
+  .form-grid { grid-template-columns: 1fr; }
+}

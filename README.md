@@ -1,17 +1,23 @@
 # Suresh Live Medias
 
-A buildless HTML, CSS and JavaScript website for a Bhimavaram media studio and event-production business.
+A React and Vite website for a Bhimavaram media studio and event-production business. The event explorer uses Chart.js to show the distribution of suggested services for each event type. The numbers are service counts, not pricing or past-event statistics.
 
-## Run locally
+## Develop and build
 
-From the repository root, run `python3 -m http.server 8000 --directory dist` and open `http://localhost:8000`.
+Use Node.js 22.12 or later.
 
-## Hosting
+```sh
+npm ci
+npm run dev
+npm run build
+npm run preview
+```
 
-Serve `dist/` as static files. The website has no runtime dependencies or server credentials. The enquiry form prepares a WhatsApp draft for the visitor to review and send. Confirm the business WhatsApp number before announcing the site publicly.
+Vercel builds with the Vite preset and publishes `dist/`. No environment variables are required.
 
-## Media and contact details
+## Maintain the site
 
-The studio logo and both service posters were supplied for this project. Event imagery is illustrative. To add a real event gallery, use approved client photos or videos with accurate captions.
-
-Service and contact information live in `dist/index.html`. Update both the displayed business number and the matching phone and WhatsApp destinations if it changes.
+- Edit business details, services, event recommendations and asset references in `src/content.js`.
+- Define palette values and semantic color roles in `src/styles/tokens.css`. The page and the chart share these tokens.
+- Replace illustrative event imagery in `public/media/` with approved client work when it is available.
+- The booking form opens a prefilled WhatsApp draft. Confirm the destination number with the business before announcing the site.

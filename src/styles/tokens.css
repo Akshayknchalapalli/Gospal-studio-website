@@ -1,0 +1,57 @@
+:root {
+  color-scheme: light;
+
+  /* Palette values live here. Components consume semantic roles below. */
+  --neutral-0: #fff;
+  --neutral-25: #f8f8f3;
+  --neutral-50: #f0f0e9;
+  --neutral-100: #dedfd5;
+  --neutral-400: #a4a79c;
+  --neutral-600: #53564e;
+  --neutral-750: #34372e;
+  --neutral-800: #252820;
+  --neutral-900: #171913;
+  --neutral-950: #10120d;
+  --lime-250: #d9fa86;
+  --lime-350: #c9f26a;
+  --lime-600: #41660d;
+  --ink-translucent: #10120dc9;
+  --overlay: #10120db0;
+  --image-line: #ffffffe0;
+  --shadow-color: #10120d17;
+
+  --surface: var(--neutral-25);
+  --surface-card: var(--neutral-0);
+  --surface-muted: var(--neutral-50);
+  --text: var(--neutral-950);
+  --text-muted: var(--neutral-600);
+  --border: var(--neutral-100);
+  --accent: var(--lime-350);
+  --accent-hover: var(--lime-250);
+  --accent-text: var(--lime-600);
+  --focus: var(--lime-600);
+  --inverse: var(--neutral-950);
+  --inverse-panel: var(--neutral-900);
+  --inverse-hover: var(--neutral-800);
+  --inverse-text: var(--neutral-25);
+  --inverse-muted: var(--neutral-400);
+  --inverse-border: var(--neutral-750);
+  --chart-capture: var(--lime-350);
+  --chart-venue: var(--neutral-25);
+  --chart-broadcast: var(--neutral-400);
+  --transparent: transparent;
+
+  --font-body: 'Manrope Variable', system-ui, sans-serif;
+  --font-display: 'Space Grotesk Variable', system-ui, sans-serif;
+  --container: 86rem;
+  --gutter: clamp(1rem, 5vw, 5rem);
+  --section-space: clamp(4.25rem, 8vw, 8rem);
+  --radius-sm: .75rem;
+  --radius-md: 1.15rem;
+  --radius-lg: 1.65rem;
+  --radius-pill: 999px;
+  --fast: 180ms;
+  --medium: 380ms;
+  --entrance: 720ms;
+  --ease-out: cubic-bezier(.2, .75, .25, 1);
+}

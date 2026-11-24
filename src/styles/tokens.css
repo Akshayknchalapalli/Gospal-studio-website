@@ -51,8 +51,8 @@
   --font-body: 'Manrope Variable', system-ui, sans-serif;
   --font-display: 'Space Grotesk Variable', system-ui, sans-serif;
   --font-editorial: Georgia, 'Times New Roman', serif;
-  --container: 86rem;
-  --gutter: clamp(1rem, 5vw, 5rem);
+  --gutter: max(1rem, 4.5vi);
+  --copy-measure: 64ch;
   --scroll-header-offset: 5.25rem;
   --scroll-reveal-offset: .75rem;
   --scroll-image-drift: clamp(.5rem, 1vw, .85rem);

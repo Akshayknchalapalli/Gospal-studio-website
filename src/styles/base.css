@@ -13,11 +13,11 @@ h2 { font-size: clamp(2.65rem, 5.15vw, 5.5rem); letter-spacing: -.068em; }
 address { font-style: normal; }
 ::selection { background: var(--accent); color: var(--on-accent); }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
-.container { width: min(var(--container), 100% - var(--gutter) * 2); margin-inline: auto; }
+.container { inline-size: calc(100% - 2 * var(--gutter)); margin-inline: auto; }
 .section { padding-block: var(--section-space); }
 .eyebrow { display: flex; align-items: center; gap: .65rem; margin-bottom: .85rem; font-size: .875rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; }
 .section-heading { display: flex; gap: 1rem 2rem; justify-content: space-between; align-items: end; margin-bottom: clamp(1.8rem, 4vw, 3.5rem); }
-.section-heading > p { max-width: 24rem; color: var(--text-muted); }
+.section-heading > p { flex: 0 1 32ch; max-width: var(--copy-measure); color: var(--text-muted); }
 .button, .icon-button { display: inline-flex; align-items: center; justify-content: center; gap: .65rem; border: 1px solid var(--transparent); line-height: 1.25; transition: background var(--fast), border-color var(--fast), transform var(--fast) var(--ease-out); }
 .button { width: fit-content; min-height: 3.05rem; padding: .7rem 1rem; border-radius: var(--radius-sm); font-size: .94rem; font-weight: 800; }
 .button:hover { transform: translateY(-2px); }
@@ -33,6 +33,7 @@ address { font-style: normal; }
 .skip-link:focus { transform: none; }
 @media (max-width: 700px) {
   .section-heading { flex-direction: column; align-items: start; }
+  .section-heading > p { flex-basis: auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

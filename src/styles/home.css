@@ -69,6 +69,10 @@
   .planning ol { grid-template-columns: 1fr; }
 }
 
+.films { padding-block: clamp(2.25rem, 3vw, 3.5rem) clamp(1.25rem, 2vw, 2rem); }
+.films .section-heading { margin-bottom: clamp(1rem, 1.8vw, 1.75rem); }
+.films + #services { padding-block-start: clamp(1.5rem, 2.5vw, 2.75rem); }
+
 .film-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
 .film-list li { border-bottom: 1px solid var(--border); }
 .film-list a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(.7rem, 2vw, 1.55rem); padding: 1rem .25rem; }

@@ -54,16 +54,16 @@
   --gutter: max(1rem, 4.5vi);
   --copy-measure: 64ch;
   --scroll-header-offset: 5.25rem;
-  --scroll-reveal-offset: .75rem;
+  --scroll-reveal-offset: .4rem;
   --scroll-image-drift: clamp(.5rem, 1vw, .85rem);
-  --section-space: clamp(4rem, 8vw, 8rem);
+  --section-space: clamp(3.25rem, 5vw, 6rem);
   --radius-sm: .4rem;
   --radius-md: .65rem;
   --radius-lg: .9rem;
   --radius-pill: 999px;
   --fast: 180ms;
   --medium: 380ms;
-  --entrance: 720ms;
+  --entrance: 480ms;
   --ease-out: cubic-bezier(.2, .75, .25, 1);
 }
 

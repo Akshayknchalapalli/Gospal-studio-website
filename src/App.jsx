@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, CalendarDays, ClipboardList, FileImage, MapPin, Menu, MessageCircle, Moon, Phone, Play, SlidersHorizontal, Sun, X } from 'lucide-react';
 import { films, posters, studio } from './content.js';
 import Dialog from './components/Dialog.jsx';
@@ -23,14 +23,35 @@ function Header({ onBook, theme, toggleTheme }) {
   const isDark = theme === 'dark';
   const [open, setOpen] = useState(false);
 
-  function closeOnEscape(event) {
-    if (event.key === 'Escape' && open) {
-      setOpen(false);
-      event.currentTarget.querySelector('.menu-toggle').focus();
+  const drawer = useRef(null);
+
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 901px)');
+    function closeOnDesktop() {
+      if (desktop.matches) drawer.current?.close();
     }
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => desktop.removeEventListener('change', closeOnDesktop);
+  }, []);
+
+  function openMenu() {
+    drawer.current.showModal();
+    setOpen(true);
   }
 
-  return <header className="header" onKeyDown={closeOnEscape}>
+  function closeMenu() {
+    drawer.current.close();
+    setOpen(false);
+  }
+
+  function dismissBackdrop(event) {
+    if (event.target !== event.currentTarget) return;
+    const { left, right, top, bottom } = event.currentTarget.getBoundingClientRect();
+    const { clientX, clientY } = event;
+    if (clientX < left || clientX > right || clientY < top || clientY > bottom) closeMenu();
+  }
+
+  return <header className="header">
     <div className="container header-inner">
       <Brand />
       <div className="header-tools">
@@ -39,13 +60,24 @@ function Header({ onBook, theme, toggleTheme }) {
           {isDark ? <Sun key="sun" size={19} aria-hidden="true" /> : <Moon key="moon" size={19} aria-hidden="true" />}
         </button>
         <button className="button button-primary header-action" type="button" onClick={() => onBook()}>{studio.quoteAction} <ArrowUpRight aria-hidden="true" size={16} /></button>
-        <button className="icon-button menu-toggle" type="button" aria-controls="navigation" aria-expanded={open}
-          aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
+        <button className="icon-button menu-toggle" type="button" aria-controls="mobile-navigation" aria-haspopup="dialog" aria-expanded={open}
+          aria-label="Open menu" onClick={openMenu}><Menu aria-hidden="true" /></button>
       </div>
-      <nav id="navigation" className={open ? 'navigation is-open' : 'navigation'} aria-label="Main navigation">
-        {links.map(([id, label]) => <a href={`#${id}`} key={id} onClick={() => setOpen(false)}>{label}</a>)}
+      <nav className="navigation" aria-label="Main navigation">
+        {links.map(([id, label]) => <a href={`#${id}`} key={id}>{label}</a>)}
       </nav>
     </div>
+    <dialog id="mobile-navigation" ref={drawer} className="mobile-drawer" aria-label="Menu"
+      onClose={() => setOpen(false)} onClick={dismissBackdrop}>
+      <div className="drawer-header">
+        <span className="drawer-title">Menu</span>
+        <button className="icon-button" type="button" aria-label="Close menu" onClick={closeMenu}><X aria-hidden="true" /></button>
+      </div>
+      <nav className="drawer-links" aria-label="Mobile navigation">
+        {links.map(([id, label]) => <a href={`#${id}`} key={id} onClick={closeMenu}>{label}</a>)}
+      </nav>
+      <button className="button button-primary" type="button" onClick={() => { closeMenu(); onBook(); }}>{studio.quoteAction}</button>
+    </dialog>
   </header>;
 }
 
@@ -112,7 +144,7 @@ function Contact({ onBook }) {
     <div className="container contact-inner">
       <div><p className="eyebrow">Bookings</p><h2 id="contact-title">Tell us about your event.</h2></div>
       <div className="contact-actions">
-        <button className="button button-dark" type="button" onClick={() => onBook()}><MessageCircle size={19} aria-hidden="true" /> {studio.quoteAction}</button>
+        <button className="button button-primary" type="button" onClick={() => onBook()}><MessageCircle size={19} aria-hidden="true" /> {studio.quoteAction}</button>
         <div className="phone-links">{studio.phones.map(({ href, label }) => <a href={href} key={href}><Phone size={15} aria-hidden="true" />{label}</a>)}</div>
       </div>
     </div>

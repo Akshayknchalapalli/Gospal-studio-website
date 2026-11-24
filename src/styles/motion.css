@@ -32,7 +32,7 @@
   }
 
   [data-scroll-fallback] [data-scroll-reveal] {
-    opacity: .78;
+    opacity: .9;
     translate: 0 var(--scroll-reveal-offset);
     transition: opacity var(--entrance) var(--ease-out), translate var(--entrance) var(--ease-out);
   }
@@ -61,7 +61,7 @@
 }
 
 @keyframes scroll-reveal {
-  from { opacity: .78; translate: 0 var(--scroll-reveal-offset); }
+  from { opacity: .9; translate: 0 var(--scroll-reveal-offset); }
   to { opacity: 1; translate: none; }
 }
 

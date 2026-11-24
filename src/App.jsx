@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { ArrowDown, ArrowUpRight, AudioLines, Camera, Clapperboard, Drone, MapPin, Menu, MessageCircle, Monitor, Phone, Radio, SlidersHorizontal, X } from 'lucide-react';
+import { ArrowUpRight, AudioLines, Camera, Clapperboard, Drone, MapPin, Menu, MessageCircle, Monitor, Moon, Phone, Radio, SlidersHorizontal, Sun, X } from 'lucide-react';
 import { posters, services, studio } from './content.js';
 import Dialog from './components/Dialog.jsx';
 import Enquiry from './components/Enquiry.jsx';
 import EventExplorer from './components/EventExplorer.jsx';
+import Hero from './components/Hero.jsx';
+import { useTheme } from './useTheme.js';
 
 const links = [['services', 'Services'], ['events', 'Events'], ['studio', 'Studio'], ['contact', 'Contact']];
 const icons = { camera: Camera, film: Clapperboard, drone: Drone, screen: Monitor, sound: AudioLines, broadcast: Radio, mix: SlidersHorizontal };
@@ -15,7 +17,8 @@ function Brand() {
   </a>;
 }
 
-function Header({ onBook }) {
+function Header({ onBook, theme, toggleTheme }) {
+  const isDark = theme === 'dark';
   const [open, setOpen] = useState(false);
 
   function closeOnEscape(event) {
@@ -28,34 +31,20 @@ function Header({ onBook }) {
   return <header className="header" onKeyDown={closeOnEscape}>
     <div className="container header-inner">
       <Brand />
-      <button className="icon-button menu-toggle" type="button" aria-controls="navigation" aria-expanded={open}
-        aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
+      <div className="header-tools">
+        <button className="icon-button theme-toggle" type="button" aria-label="Dark mode" aria-pressed={isDark}
+          title={isDark ? 'Switch to light mode' : 'Switch to dark mode'} onClick={toggleTheme}>
+          {isDark ? <Sun key="sun" size={19} aria-hidden="true" /> : <Moon key="moon" size={19} aria-hidden="true" />}
+        </button>
+        <button className="button button-dark header-action" type="button" onClick={() => onBook()}>Plan your event <ArrowUpRight aria-hidden="true" size={16} /></button>
+        <button className="icon-button menu-toggle" type="button" aria-controls="navigation" aria-expanded={open}
+          aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
+      </div>
       <nav id="navigation" className={open ? 'navigation is-open' : 'navigation'} aria-label="Main navigation">
         {links.map(([id, label]) => <a href={`#${id}`} key={id} onClick={() => setOpen(false)}>{label}</a>)}
       </nav>
-      <button className="button button-dark header-action" type="button" onClick={() => onBook()}>Plan your event <ArrowUpRight aria-hidden="true" size={16} /></button>
     </div>
   </header>;
-}
-
-function Hero({ onBook }) {
-  return <section className="hero container" aria-labelledby="hero-title">
-    <div className="hero-copy">
-      <p className="eyebrow"><span className="signal" aria-hidden="true" /> Studio &amp; event production</p>
-      <h1 id="hero-title">Built for the<br />big moment<span>.</span></h1>
-      <p className="hero-description">Photography, films and live production for events in Bhimavaram. From the first frame to the final cue.</p>
-      <div className="hero-actions">
-        <button className="button button-primary" type="button" onClick={() => onBook()}>Plan your event <ArrowUpRight aria-hidden="true" size={18} /></button>
-        <a className="explore" href="#services">Explore services <ArrowDown aria-hidden="true" size={16} /></a>
-      </div>
-    </div>
-    <figure className="hero-media">
-      <img src="/media/production.webp" fetchPriority="high" alt="Illustrative photograph of a camera operator filming a live stage" width="1536" height="1024" />
-      <span className="frame-corner corner-top" aria-hidden="true" />
-      <span className="frame-corner corner-bottom" aria-hidden="true" />
-      <figcaption><MapPin size={16} aria-hidden="true" /> Bhimavaram, Andhra Pradesh</figcaption>
-    </figure>
-  </section>;
 }
 
 function Services({ onBook }) {
@@ -112,6 +101,7 @@ function Contact({ onBook }) {
 }
 
 export default function App() {
+  const { theme, toggleTheme } = useTheme();
   const [enquiry, setEnquiry] = useState(null);
   const [poster, setPoster] = useState(null);
   const openEnquiry = (type = '', selected = []) => setEnquiry({ type, services: selected });
@@ -119,7 +109,7 @@ export default function App() {
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
     <div id="top" />
-    <Header onBook={openEnquiry} />
+    <Header onBook={openEnquiry} theme={theme} toggleTheme={toggleTheme} />
     <main id="main">
       <Hero onBook={openEnquiry} />
       <Services onBook={openEnquiry} />

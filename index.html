@@ -7,6 +7,16 @@
     <meta property="og:title" content="Suresh Live Medias | Studio & Event Production">
     <meta property="og:description" content="Photography, film and live event production in Bhimavaram.">
     <meta property="og:type" content="website">
+    <script>
+      (() => {
+        const root = document.documentElement;
+        let saved;
+        try { saved = localStorage.getItem('slm-theme'); } catch {}
+        if (saved === 'light' || saved === 'dark') root.dataset.themePreference = saved;
+        root.dataset.theme = root.dataset.themePreference
+          || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      })();
+    </script>
     <link rel="icon" href="/media/icon.webp" type="image/webp">
     <title>Suresh Live Medias | Studio &amp; Event Production</title>
   </head>

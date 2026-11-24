@@ -21,3 +21,4 @@ Vercel builds with the Vite preset and publishes `dist/`. No environment variabl
 - Define palette values and semantic color roles in `src/styles/tokens.css`. The page and the chart share these tokens.
 - Replace illustrative event imagery in `public/media/` with approved client work when it is available.
 - The booking form opens a prefilled WhatsApp draft. Confirm the destination number with the business before announcing the site.
+- The site follows the visitor’s system color scheme until they choose light or dark mode. Set theme overrides in the same token file. Motion honors the system reduced-motion preference.

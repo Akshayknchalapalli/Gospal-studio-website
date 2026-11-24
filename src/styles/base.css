@@ -10,7 +10,7 @@ p, h1, h2, h3, figure { margin: 0; }
 h1, h2, h3 { font-family: var(--font-display); font-weight: 650; line-height: 1; }
 h2 { font-size: clamp(2.65rem, 5.15vw, 5.5rem); letter-spacing: -.075em; }
 address { font-style: normal; }
-::selection { background: var(--accent); color: var(--text); }
+::selection { background: var(--accent); color: var(--on-accent); }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
 .container { width: min(var(--container), 100% - var(--gutter) * 2); margin-inline: auto; }
 .section { padding-block: var(--section-space); scroll-margin-top: 4.8rem; }
@@ -20,15 +20,15 @@ address { font-style: normal; }
 .button, .icon-button { display: inline-flex; align-items: center; justify-content: center; gap: .65rem; border: 1px solid var(--transparent); line-height: 1.25; transition: background var(--fast), border-color var(--fast), transform var(--fast) var(--ease-out); }
 .button { width: fit-content; min-height: 3.05rem; padding: .7rem 1rem; border-radius: var(--radius-pill); font-size: .94rem; font-weight: 800; }
 .button:hover { transform: translateY(-2px); }
-.button-primary { background: var(--accent); color: var(--text); }
+.button-primary { background: var(--accent); color: var(--on-accent); }
 .button-primary:hover { background: var(--accent-hover); }
-.button-dark { background: var(--inverse); color: var(--inverse-text); }
+.button-dark { background: var(--inverse); color: var(--inverse-text); border-color: var(--button-dark-border); }
 .button-dark:hover { background: var(--inverse-hover); }
 .button-outline { background: var(--transparent); border-color: var(--border); }
 .button-outline:hover { border-color: var(--text); }
 .icon-button { width: 2.75rem; height: 2.75rem; flex: 0 0 auto; padding: 0; border-radius: var(--radius-pill); background: var(--transparent); border-color: var(--border); }
 .icon-button:hover { background: var(--surface-muted); }
-.skip-link { position: fixed; inset: 1rem auto auto 1rem; z-index: 30; transform: translateY(-200%); padding: .65rem 1rem; background: var(--accent); border-radius: var(--radius-sm); }
+.skip-link { position: fixed; inset: 1rem auto auto 1rem; z-index: 30; transform: translateY(-200%); padding: .65rem 1rem; background: var(--accent); color: var(--on-accent); border-radius: var(--radius-sm); }
 .skip-link:focus { transform: none; }
 @media (max-width: 700px) {
   .section-heading { flex-direction: column; align-items: start; }

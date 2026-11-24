@@ -55,3 +55,30 @@
   --entrance: 720ms;
   --ease-out: cubic-bezier(.2, .75, .25, 1);
 }
+
+:root {
+  --on-accent: var(--neutral-950);
+  --button-dark-border: var(--transparent);
+  --hero-glow: #c9f26a30;
+  --hero-grain: #53564e25;
+  --hero-frame: #10120d47;
+  --hero-shade: #10120dd4;
+  --hero-scan: #f8f8f34f;
+  --events-surface: var(--inverse);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --surface: var(--neutral-950);
+  --surface-card: var(--neutral-900);
+  --surface-muted: var(--neutral-800);
+  --text: var(--neutral-25);
+  --text-muted: var(--neutral-400);
+  --border: var(--neutral-750);
+  --accent-text: var(--lime-350);
+  --focus: var(--lime-350);
+  --button-dark-border: var(--neutral-750);
+  --shadow-color: #0006;
+  --hero-grain: #a4a79c38;
+  --events-surface: var(--neutral-900);
+}

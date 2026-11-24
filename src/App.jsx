@@ -110,7 +110,7 @@ function Films() {
 function Contact({ onBook }) {
   return <section className="contact" id="contact" aria-labelledby="contact-title">
     <div className="container contact-inner">
-      <div><p className="eyebrow">Bookings</p><h2 id="contact-title">Tell us about<br />your event.</h2></div>
+      <div><p className="eyebrow">Bookings</p><h2 id="contact-title">Tell us about your event.</h2></div>
       <div className="contact-actions">
         <button className="button button-dark" type="button" onClick={() => onBook()}><MessageCircle size={19} aria-hidden="true" /> {studio.quoteAction}</button>
         <div className="phone-links">{studio.phones.map(({ href, label }) => <a href={href} key={href}><Phone size={15} aria-hidden="true" />{label}</a>)}</div>

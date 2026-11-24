@@ -1,6 +1,6 @@
 import { lazy, Suspense, useState } from 'react';
-import { ArrowUpRight, ChevronDown, Church, Clapperboard, Heart, Monitor } from 'lucide-react';
-import { events, services } from '../content.js';
+import { ArrowUpRight, ChevronDown, Church, Clapperboard, Heart, Monitor, Play } from 'lucide-react';
+import { events, films, quoteNotes, services, studio } from '../content.js';
 
 const ProductionChart = lazy(() => import('./ProductionChart.jsx'));
 const icons = { wedding: Heart, stage: Monitor, gospel: Church, studio: Clapperboard };
@@ -9,6 +9,7 @@ export default function EventExplorer({ onBook }) {
   const [index, setIndex] = useState(0);
   const [showSetup, setShowSetup] = useState(false);
   const event = events[index];
+  const film = films.find(({ event: eventId }) => eventId === event.id);
 
   function select(index) {
     setIndex(index);
@@ -46,18 +47,20 @@ export default function EventExplorer({ onBook }) {
           <div className="event-copy" key={event.id}>
             <h3>{event.title}</h3>
             <p>{event.description}</p>
+            <p className="event-quote-note"><strong>For your quote</strong> {quoteNotes[event.id]}</p>
             <ul className="event-services" aria-label="Suggested services">
               {services.filter(({ id }) => event.services.includes(id)).map(({ id, name }) => <li key={id}>{name}</li>)}
             </ul>
           </div>
           <div className="event-actions">
             <button className="button button-primary" type="button" onClick={() => onBook(event.type, event.services)}>
-              Enquire about this setup <ArrowUpRight size={17} aria-hidden="true" />
+              {studio.quoteAction} <ArrowUpRight size={17} aria-hidden="true" />
             </button>
             <button className="button event-setup-button" type="button" aria-expanded={showSetup} aria-controls="event-setup" onClick={() => setShowSetup(!showSetup)}>
               Production breakdown <ChevronDown size={17} aria-hidden="true" />
             </button>
           </div>
+          {film && <a className="event-film-link" href={film.url} target="_blank" rel="noreferrer"><Play size={16} aria-hidden="true" /> Watch {film.title} on YouTube</a>}
           <div className="event-setup" id="event-setup" hidden={!showSetup}>
             {showSetup && <Suspense fallback={<p role="status">Loading production breakdown…</p>}><ProductionChart event={event} /></Suspense>}
           </div>

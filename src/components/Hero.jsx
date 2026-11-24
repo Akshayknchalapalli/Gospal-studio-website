@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowDown, ArrowUpRight, MapPin } from 'lucide-react';
+import { ArrowUpRight, Play } from 'lucide-react';
+import { studio } from '../content.js';
 
 const scenes = [
   { id: 'live', label: 'Live production', image: '/media/production.webp', alt: 'Illustration of a live stage being filmed at an evening event' },
@@ -27,12 +28,11 @@ export default function Hero({ onBook }) {
       </div>
       <div className="container hero-layout">
         <div className="hero-copy">
-          <p className="eyebrow hero-location"><MapPin size={15} aria-hidden="true" /> Media studio in Bhimavaram</p>
-          <h1 id="hero-title"><span>Live events.</span> <em>Captured well.</em></h1>
-          <p className="hero-description">Films, photography, streaming, LED screens and JBL sound for weddings, stage shows and gatherings.</p>
+          <h1 id="hero-title"><span>Wedding films and</span> <span>live event production</span> <em>in Bhimavaram</em></h1>
+          <p className="hero-description">Photography, LED screens, JBL sound, and livestreaming for weddings, church events, and stage shows.</p>
           <div className="hero-actions">
-            <button className="button button-primary" type="button" onClick={() => onBook()}>Plan your event <ArrowUpRight aria-hidden="true" size={19} /></button>
-            <a className="button hero-explore" href="#events">Explore event coverage <ArrowDown aria-hidden="true" size={17} /></a>
+            <button className="button button-primary" type="button" onClick={() => onBook()}>{studio.quoteAction} <ArrowUpRight aria-hidden="true" size={19} /></button>
+            <a className="button hero-explore" href="#films">Watch real event films <Play aria-hidden="true" size={17} /></a>
           </div>
         </div>
         <div className="hero-reel">

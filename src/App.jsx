@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { ArrowUpRight, CalendarDays, ClipboardList, FileImage, MapPin, Menu, MessageCircle, Moon, Phone, SlidersHorizontal, Sun, X } from 'lucide-react';
-import { posters, studio } from './content.js';
+import { ArrowUpRight, CalendarDays, ClipboardList, FileImage, MapPin, Menu, MessageCircle, Moon, Phone, Play, SlidersHorizontal, Sun, X } from 'lucide-react';
+import { films, posters, studio } from './content.js';
 import Dialog from './components/Dialog.jsx';
 import Enquiry from './components/Enquiry.jsx';
 import EventExplorer from './components/EventExplorer.jsx';
@@ -38,7 +38,7 @@ function Header({ onBook, theme, toggleTheme }) {
           title={isDark ? 'Switch to light mode' : 'Switch to dark mode'} onClick={toggleTheme}>
           {isDark ? <Sun key="sun" size={19} aria-hidden="true" /> : <Moon key="moon" size={19} aria-hidden="true" />}
         </button>
-        <button className="button button-primary header-action" type="button" onClick={() => onBook()}>Plan your event <ArrowUpRight aria-hidden="true" size={16} /></button>
+        <button className="button button-primary header-action" type="button" onClick={() => onBook()}>{studio.quoteAction} <ArrowUpRight aria-hidden="true" size={16} /></button>
         <button className="icon-button menu-toggle" type="button" aria-controls="navigation" aria-expanded={open}
           aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
       </div>
@@ -76,8 +76,8 @@ function Studio({ onPoster }) {
       <p className="eyebrow">The studio</p>
       <h2 id="studio-title">Visit us in Bhimavaram.</h2>
       <p>Come by to discuss a studio session, show us your venue plans, or choose coverage for an upcoming event.</p>
-      <address><MapPin size={22} aria-hidden="true" /><span>{studio.address[0]}<br />{studio.address[1]}</span></address>
-      <a className="button button-outline" href={studio.directions} target="_blank" rel="noreferrer">Find the nearby landmark <ArrowUpRight size={16} aria-hidden="true" /></a>
+      <address><MapPin size={22} aria-hidden="true" /><span>{studio.address[0]}<br />{studio.address[1]}<br />Andhra Pradesh</span></address>
+      <a className="button button-outline" href={studio.phones[0].href}><Phone size={16} aria-hidden="true" /> Call for studio directions</a>
       <div className="posters" aria-label="Studio service posters">
         {posters.map((poster) => <button className="poster" type="button" key={poster.title} onClick={() => onPoster(poster)}>
           <FileImage size={17} aria-hidden="true" /><span>{poster.title} poster</span><ArrowUpRight size={16} aria-hidden="true" />
@@ -87,12 +87,32 @@ function Studio({ onPoster }) {
   </section>;
 }
 
+function Films() {
+  return <section className="films section container" id="films" aria-labelledby="films-title">
+    <div className="section-heading" data-scroll-reveal>
+      <div><p className="eyebrow">Published work</p><h2 id="films-title">Real event films</h2></div>
+      <p>Watch examples from the Suresh Live Media’s YouTube channel.</p>
+    </div>
+    <ul className="film-list">
+      {films.map(({ event, title, kind, description, url }) => (
+        <li key={event} data-scroll-reveal>
+          <a href={url} target="_blank" rel="noreferrer">
+            <span className="film-icon"><Play size={20} aria-hidden="true" /></span>
+            <span><small>{kind}</small><strong>{title}</strong><span className="film-description">{description}</span></span>
+            <span className="film-platform">YouTube <ArrowUpRight size={16} aria-hidden="true" /></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>;
+}
+
 function Contact({ onBook }) {
   return <section className="contact" id="contact" aria-labelledby="contact-title">
     <div className="container contact-inner">
       <div><p className="eyebrow">Bookings</p><h2 id="contact-title">Tell us about<br />your event.</h2></div>
       <div className="contact-actions">
-        <button className="button button-dark" type="button" onClick={() => onBook()}><MessageCircle size={19} aria-hidden="true" /> Build a WhatsApp enquiry</button>
+        <button className="button button-dark" type="button" onClick={() => onBook()}><MessageCircle size={19} aria-hidden="true" /> {studio.quoteAction}</button>
         <div className="phone-links">{studio.phones.map(({ href, label }) => <a href={href} key={href}><Phone size={15} aria-hidden="true" />{label}</a>)}</div>
       </div>
     </div>
@@ -112,6 +132,7 @@ export default function App() {
     <Header onBook={openEnquiry} theme={theme} toggleTheme={toggleTheme} />
     <main id="main">
       <Hero onBook={openEnquiry} />
+      <Films />
       <Capabilities onBook={openEnquiry} />
       <section className="section events" id="events" aria-labelledby="events-title">
         <div className="container">

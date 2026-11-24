@@ -72,3 +72,7 @@
   .event-tabs button { grid-template-columns: auto 1fr; }
   .event-tabs button svg:last-child { display: none; }
 }
+
+.event-quote-note strong { color: var(--inverse-text); margin-inline-end: .35rem; }
+.event-film-link { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.75rem; margin-top: .55rem; color: var(--accent); font-weight: 750; }
+.event-film-link:hover { text-decoration: underline; }

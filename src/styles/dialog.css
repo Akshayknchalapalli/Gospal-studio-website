@@ -25,3 +25,6 @@
 @media (max-width: 430px) {
   .form-grid { grid-template-columns: 1fr; }
 }
+
+.form-intro { margin-bottom: .85rem; color: var(--text-muted); }
+.form-intro strong { color: var(--text); white-space: nowrap; }

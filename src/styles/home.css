@@ -68,3 +68,18 @@
 @media (max-width: 560px) {
   .planning ol { grid-template-columns: 1fr; }
 }
+
+.film-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
+.film-list li { border-bottom: 1px solid var(--border); }
+.film-list a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(.7rem, 2vw, 1.55rem); padding: 1rem .25rem; }
+.film-list a:hover strong { color: var(--accent-text); }
+.film-icon { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: var(--radius-pill); background: var(--surface-muted); color: var(--accent-text); }
+.film-list small, .film-list strong, .film-description { display: block; }
+.film-list small { color: var(--accent-text); font-weight: 800; }
+.film-list strong { font: 650 clamp(1.15rem, 2.5vw, 1.8rem)/1.2 var(--font-display); }
+.film-description { margin-top: .25rem; color: var(--text-muted); }
+.film-platform { display: inline-flex; align-items: center; gap: .4rem; font-size: .875rem; font-weight: 750; }
+@media (max-width: 530px) {
+  .film-list a { grid-template-columns: auto minmax(0, 1fr); }
+  .film-platform { grid-column: 2; }
+}

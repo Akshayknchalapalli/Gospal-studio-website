@@ -7,7 +7,7 @@ export const studio = {
     { label: '+91 98482 75382', href: 'tel:+919848275382' },
   ],
   whatsapp: 'https://wa.me/919153777999',
-  directions: 'https://www.google.com/maps/search/?api=1&query=Government+Hospital+Bhimavaram+Andhra+Pradesh',
+  quoteAction: 'Check availability & get a quote',
 };
 
 export const services = [
@@ -32,6 +32,19 @@ export const events = [
   { id: 'gospel', tab: 'Church & gospel', type: 'Church or gospel event', title: 'Church & gospel events', description: 'Photography, films and live production for Christian weddings, church programmes and worship gatherings.', image: '/media/gospel.webp', alt: 'Illustrative image of a church gathering', logo: { src: '/media/gospel-media-logo.webp', alt: 'Gospel Media Service, Bhimavaram' }, services: ['photo', 'film', 'led', 'sound', 'stream', 'mix'] },
   { id: 'studio', tab: 'Studio sessions', type: 'Studio session', title: 'Studio sessions', description: 'Talk to us about a studio photography or video session in Bhimavaram.', image: '/media/studio.webp', alt: 'Illustrative image of a camera on a studio set', services: ['photo', 'film'] },
 ];
+
+export const films = [
+  { event: 'wedding', title: 'Praneeth & Divya wedding highlights', kind: 'Wedding film', description: 'Wedding highlights published by Suresh Live Media’s.', url: 'https://www.youtube.com/watch?v=aAj5YQyJj2M' },
+  { event: 'stage', title: 'Bhashyam Annual Day', kind: 'Stage event', description: 'Coverage of the Bhimavaram Branch 2 annual day celebrations.', url: 'https://www.youtube.com/watch?v=SIWt3Mchink' },
+  { event: 'gospel', title: 'Holy Lutheran Church Sunday service', kind: 'Church livestream', description: 'A recorded livestream from Holy Lutheran Church on Rest House Road, Bhimavaram.', url: 'https://www.youtube.com/watch?v=IACGaLE7nzI' },
+];
+
+export const quoteNotes = {
+  wedding: 'Share your ceremony and reception times, whether they’re at different venues, and whether guests will watch remotely.',
+  stage: 'Share your venue, audience size and programme times. Mention whether screens or a sound system are already installed.',
+  gospel: 'Share your service schedule, venue and preferred streaming platform. Gospel Media Service and Suresh Live Medias use the same booking number for church and gospel enquiries.',
+  studio: 'Share your preferred date, the type of shoot, and the number of people or items you’d like photographed.',
+};
 
 export const posters = [
   { title: 'Suresh Live Medias', image: '/media/studio-poster.webp' },

@@ -22,9 +22,6 @@
       animation-range: entry 0% entry 100%;
     }
 
-    .service-card:nth-child(2n) { animation-range: entry 4% entry 100%; }
-    .service-card:nth-child(4n + 3) { animation-range: entry 8% entry 100%; }
-
     .event-image { view-timeline-name: --event-frame; }
 
     .event-image > .event-backdrop {

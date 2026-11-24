@@ -6,9 +6,10 @@ img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
+[hidden] { display: none !important; }
 p, h1, h2, h3, figure { margin: 0; }
 h1, h2, h3 { font-family: var(--font-display); font-weight: 650; line-height: 1; }
-h2 { font-size: clamp(2.65rem, 5.15vw, 5.5rem); letter-spacing: -.075em; }
+h2 { font-size: clamp(2.65rem, 5.15vw, 5.5rem); letter-spacing: -.068em; }
 address { font-style: normal; }
 ::selection { background: var(--accent); color: var(--on-accent); }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
@@ -18,7 +19,7 @@ address { font-style: normal; }
 .section-heading { display: flex; gap: 1rem 2rem; justify-content: space-between; align-items: end; margin-bottom: clamp(1.8rem, 4vw, 3.5rem); }
 .section-heading > p { max-width: 24rem; color: var(--text-muted); }
 .button, .icon-button { display: inline-flex; align-items: center; justify-content: center; gap: .65rem; border: 1px solid var(--transparent); line-height: 1.25; transition: background var(--fast), border-color var(--fast), transform var(--fast) var(--ease-out); }
-.button { width: fit-content; min-height: 3.05rem; padding: .7rem 1rem; border-radius: var(--radius-pill); font-size: .94rem; font-weight: 800; }
+.button { width: fit-content; min-height: 3.05rem; padding: .7rem 1rem; border-radius: var(--radius-sm); font-size: .94rem; font-weight: 800; }
 .button:hover { transform: translateY(-2px); }
 .button-primary { background: var(--accent); color: var(--on-accent); }
 .button-primary:hover { background: var(--accent-hover); }

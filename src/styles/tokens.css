@@ -1,57 +1,65 @@
 :root {
   color-scheme: light;
+  /* Theme and image treatment consume the same palette. */
+  --paper: #f5f3ee;
+  --white: #fffdf7;
+  --stone: #eae5db;
+  --stone-border: #d5cec0;
+  --slate: #555752;
+  --mist: #b5bdc8;
+  --navy-edge: #35404f;
+  --navy-raised: #26303d;
+  --navy-panel: #19212c;
+  --navy: #121923;
+  --midnight: #0b1018;
+  --amber: #ffba65;
+  --amber-light: #ffd097;
+  --amber-dark: #874408;
+  --image-shade: #080d16c7;
+  --hero-edge: #090e17fa;
+  --hero-middle: #090e1760;
+  --hero-right: #090e171b;
+  --hero-bottom: #090e17e8;
+  --glass-edge: #fffdf741;
+  --overlay: #060a11b8;
+  --shadow-color: #0b101820;
 
-  /* Palette values live here. Components consume semantic roles below. */
-  --neutral-0: #fff;
-  --neutral-25: #f8f8f3;
-  --neutral-50: #f0f0e9;
-  --neutral-100: #dedfd5;
-  --neutral-400: #a4a79c;
-  --neutral-600: #53564e;
-  --neutral-750: #34372e;
-  --neutral-800: #252820;
-  --neutral-900: #171913;
-  --neutral-950: #10120d;
-  --lime-250: #d9fa86;
-  --lime-350: #c9f26a;
-  --lime-600: #41660d;
-  --ink-translucent: #10120dc9;
-  --overlay: #10120db0;
-  --image-line: #ffffffe0;
-  --shadow-color: #10120d17;
-
-  --surface: var(--neutral-25);
-  --surface-card: var(--neutral-0);
-  --surface-muted: var(--neutral-50);
-  --text: var(--neutral-950);
-  --text-muted: var(--neutral-600);
-  --border: var(--neutral-100);
-  --accent: var(--lime-350);
-  --accent-hover: var(--lime-250);
-  --accent-text: var(--lime-600);
-  --focus: var(--lime-600);
-  --inverse: var(--neutral-950);
-  --inverse-panel: var(--neutral-900);
-  --inverse-hover: var(--neutral-800);
-  --inverse-text: var(--neutral-25);
-  --inverse-muted: var(--neutral-400);
-  --inverse-border: var(--neutral-750);
-  --chart-capture: var(--lime-350);
-  --chart-venue: var(--neutral-25);
-  --chart-broadcast: var(--neutral-400);
+  --surface: var(--paper);
+  --header-surface: var(--paper);
+  --surface-card: var(--white);
+  --surface-muted: var(--stone);
+  --text: var(--midnight);
+  --text-muted: var(--slate);
+  --border: var(--stone-border);
+  --accent: var(--amber);
+  --accent-hover: var(--amber-light);
+  --accent-text: var(--amber-dark);
+  --focus: var(--amber-dark);
+  --on-accent: var(--midnight);
+  --inverse: var(--midnight);
+  --inverse-panel: var(--navy-panel);
+  --inverse-hover: var(--navy-raised);
+  --inverse-text: var(--white);
+  --inverse-muted: var(--mist);
+  --inverse-border: var(--navy-edge);
+  --button-dark-border: transparent;
+  --chart-capture: var(--amber);
+  --chart-venue: var(--white);
+  --chart-broadcast: var(--mist);
   --transparent: transparent;
 
   --font-body: 'Manrope Variable', system-ui, sans-serif;
   --font-display: 'Space Grotesk Variable', system-ui, sans-serif;
+  --font-editorial: Georgia, 'Times New Roman', serif;
   --container: 86rem;
   --gutter: clamp(1rem, 5vw, 5rem);
   --scroll-header-offset: 5.25rem;
   --scroll-reveal-offset: .75rem;
   --scroll-image-drift: clamp(.5rem, 1vw, .85rem);
-  --section-space: clamp(4.25rem, 8vw, 8rem);
-  --radius-sm: .75rem;
-  --radius-md: 1.15rem;
-  --radius-lg: 1.65rem;
+  --section-space: clamp(4rem, 8vw, 8rem);
+  --radius-sm: .4rem;
+  --radius-md: .65rem;
+  --radius-lg: .9rem;
   --radius-pill: 999px;
   --fast: 180ms;
   --medium: 380ms;
@@ -59,29 +67,16 @@
   --ease-out: cubic-bezier(.2, .75, .25, 1);
 }
 
-:root {
-  --on-accent: var(--neutral-950);
-  --button-dark-border: var(--transparent);
-  --hero-glow: #c9f26a30;
-  --hero-grain: #53564e25;
-  --hero-frame: #10120d47;
-  --hero-shade: #10120dd4;
-  --hero-scan: #f8f8f34f;
-  --events-surface: var(--inverse);
-}
-
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --surface: var(--neutral-950);
-  --surface-card: var(--neutral-900);
-  --surface-muted: var(--neutral-800);
-  --text: var(--neutral-25);
-  --text-muted: var(--neutral-400);
-  --border: var(--neutral-750);
-  --accent-text: var(--lime-350);
-  --focus: var(--lime-350);
-  --button-dark-border: var(--neutral-750);
-  --shadow-color: #0006;
-  --hero-grain: #a4a79c38;
-  --events-surface: var(--neutral-900);
+  --surface: var(--navy);
+  --header-surface: var(--midnight);
+  --surface-card: var(--navy-panel);
+  --surface-muted: var(--navy-raised);
+  --text: var(--white);
+  --text-muted: var(--mist);
+  --border: var(--navy-edge);
+  --accent-text: var(--amber);
+  --focus: var(--amber);
+  --button-dark-border: var(--navy-edge);
 }

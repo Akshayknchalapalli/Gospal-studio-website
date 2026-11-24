@@ -48,9 +48,9 @@
   --chart-broadcast: var(--mist);
   --transparent: transparent;
 
-  --font-body: 'Manrope Variable', system-ui, sans-serif;
-  --font-display: 'Space Grotesk Variable', system-ui, sans-serif;
-  --font-editorial: Georgia, 'Times New Roman', serif;
+  --font-sans: 'Geist Variable', system-ui, sans-serif;
+  --font-body: var(--font-sans);
+  --font-display: var(--font-sans);
   --gutter: max(1rem, 4.5vi);
   --copy-measure: 64ch;
   --scroll-header-offset: 5.25rem;

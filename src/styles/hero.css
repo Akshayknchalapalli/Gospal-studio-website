@@ -5,9 +5,9 @@
 .hero-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--hero-edge) 0%, var(--hero-middle) 55%, var(--hero-right) 100%), linear-gradient(0deg, var(--hero-bottom), var(--transparent) 33%); }
 .hero-layout { display: grid; align-content: end; min-height: clamp(37rem, calc(89svh - 4.8rem), 62rem); }
 .hero-copy { padding-block: clamp(4.3rem, 9vw, 8rem) clamp(3rem, 7vw, 6rem); }
-.hero h1 { font-size: clamp(3.7rem, 7.1vw, 7.55rem); letter-spacing: -.085em; line-height: .91; }
+.hero h1 { font-size: clamp(3.7rem, 7.1vw, 7.55rem); letter-spacing: -.055em; line-height: 1; }
 .hero h1 span, .hero h1 em { display: block; width: fit-content; animation: hero-rise 760ms var(--ease-out) both; }
-.hero h1 em { font: italic 400 .88em/.99 var(--font-editorial); letter-spacing: -.085em; color: var(--accent-hover); animation-delay: 110ms; }
+.hero h1 em { font: 450 .78em/1.08 var(--font-display); letter-spacing: -.045em; color: var(--accent-hover); animation-delay: 110ms; }
 .hero-description { max-width: 30rem; margin-top: clamp(1rem, 3vw, 1.85rem); color: var(--inverse-text); font-size: clamp(1rem, 1.65vw, 1.22rem); animation: hero-rise 740ms 160ms var(--ease-out) both; }
 .hero-actions { margin-top: 1.65rem; display: flex; flex-wrap: wrap; gap: .75rem; animation: hero-rise 740ms 220ms var(--ease-out) both; }
 .hero-explore { border-color: var(--glass-edge); background: var(--image-shade); color: var(--inverse-text); }

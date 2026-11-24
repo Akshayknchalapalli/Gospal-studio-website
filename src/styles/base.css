@@ -9,7 +9,7 @@ button { cursor: pointer; }
 [hidden] { display: none !important; }
 p, h1, h2, h3, figure { margin: 0; }
 h1, h2, h3 { font-family: var(--font-display); font-weight: 650; line-height: 1; }
-h2 { font-size: clamp(2.65rem, 5.15vw, 5.5rem); letter-spacing: -.068em; }
+h2 { font-size: clamp(2.65rem, 5.15vw, 5.5rem); letter-spacing: -.045em; }
 address { font-style: normal; }
 ::selection { background: var(--accent); color: var(--on-accent); }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }

@@ -136,9 +136,10 @@ export default function App() {
       <Capabilities onBook={openEnquiry} />
       <section className="section events" id="events" aria-labelledby="events-title">
         <div className="container">
-          <div className="section-heading" data-scroll-reveal>
-            <div><p className="eyebrow">Event coverage</p><h2 id="events-title">Find your kind of coverage.</h2></div>
-            <p>Choose an event to explore a suggested setup, then tell us what you need.</p>
+          <div className="events-intro" data-scroll-reveal>
+            <p className="eyebrow">Event coverage</p>
+            <h2 id="events-title">Coverage for your event.</h2>
+            <p className="events-description">Choose your event type to see suggested services and what to share for a quote.</p>
           </div>
           <EventExplorer onBook={openEnquiry} />
         </div>

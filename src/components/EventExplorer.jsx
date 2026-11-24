@@ -19,7 +19,7 @@ export default function EventExplorer({ onBook }) {
   function navigate(keyEvent) {
     const previous = (index + events.length - 1) % events.length;
     const next = (index + 1) % events.length;
-    const nextIndex = { ArrowLeft: previous, ArrowUp: previous, ArrowRight: next, ArrowDown: next, Home: 0, End: events.length - 1 }[keyEvent.key];
+    const nextIndex = { ArrowLeft: previous, ArrowRight: next, Home: 0, End: events.length - 1 }[keyEvent.key];
 
     if (nextIndex === undefined) return;
     keyEvent.preventDefault();
@@ -34,7 +34,7 @@ export default function EventExplorer({ onBook }) {
           const Icon = icons[option.id];
           return <button type="button" key={option.id} role="tab" id={`tab-${option.id}`}
             aria-selected={optionIndex === index} aria-controls="event-panel" tabIndex={optionIndex === index ? 0 : -1}
-            onClick={() => select(optionIndex)}><Icon size={20} aria-hidden="true" /><span>{option.tab}</span><ArrowUpRight size={16} aria-hidden="true" /></button>;
+            onClick={() => select(optionIndex)}><Icon size={20} aria-hidden="true" /><span>{option.tab}</span></button>;
         })}
       </div>
       <div className="event-panel" id="event-panel" role="tabpanel" aria-labelledby={`tab-${event.id}`} tabIndex={0}>

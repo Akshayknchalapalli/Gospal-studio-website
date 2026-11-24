@@ -1,5 +1,5 @@
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-block-start: var(--scroll-header-offset); }
 body { margin: 0; color: var(--text); background: var(--surface); font: 1rem/1.6 var(--font-body); }
 body:has(dialog[open]) { overflow: hidden; }
 img { display: block; max-width: 100%; }
@@ -13,7 +13,7 @@ address { font-style: normal; }
 ::selection { background: var(--accent); color: var(--on-accent); }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
 .container { width: min(var(--container), 100% - var(--gutter) * 2); margin-inline: auto; }
-.section { padding-block: var(--section-space); scroll-margin-top: 4.8rem; }
+.section { padding-block: var(--section-space); }
 .eyebrow { display: flex; align-items: center; gap: .65rem; margin-bottom: .85rem; font-size: .875rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; }
 .section-heading { display: flex; gap: 1rem 2rem; justify-content: space-between; align-items: end; margin-bottom: clamp(1.8rem, 4vw, 3.5rem); }
 .section-heading > p { max-width: 24rem; color: var(--text-muted); }

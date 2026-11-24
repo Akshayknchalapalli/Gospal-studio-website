@@ -33,7 +33,7 @@ export default function EventExplorer({ onBook }) {
       </div>
       <div className="event-panel" id="event-panel" role="tabpanel" aria-labelledby={`tab-${event.id}`} tabIndex={0}>
         <figure className="event-image" key={event.id}>
-          <img src={event.image} alt={event.alt} loading="lazy" width="1000" height="750" />
+          <img className="event-backdrop" src={event.image} alt={event.alt} loading="lazy" width="1000" height="750" />
           {event.logo && (
             <img className="event-logo" src={event.logo.src} alt={event.logo.alt} width="600" height="600" />
           )}

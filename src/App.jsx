@@ -6,6 +6,7 @@ import Enquiry from './components/Enquiry.jsx';
 import EventExplorer from './components/EventExplorer.jsx';
 import Hero from './components/Hero.jsx';
 import { useTheme } from './useTheme.js';
+import { useScrollReveal } from './useScrollReveal.js';
 
 const links = [['services', 'Services'], ['events', 'Events'], ['studio', 'Studio'], ['contact', 'Contact']];
 const icons = { camera: Camera, film: Clapperboard, drone: Drone, screen: Monitor, sound: AudioLines, broadcast: Radio, mix: SlidersHorizontal };
@@ -49,19 +50,19 @@ function Header({ onBook, theme, toggleTheme }) {
 
 function Services({ onBook }) {
   return <section className="section container" id="services" aria-labelledby="services-title">
-    <div className="section-heading">
+    <div className="section-heading" data-scroll-reveal>
       <div><p className="eyebrow">Services</p><h2 id="services-title">From camera to crowd.</h2></div>
       <p>Book individual services or bring your camera crew, screens, sound and broadcast together with one team.</p>
     </div>
     <div className="services-grid">
       {services.map(({ id, icon, name, description }) => {
         const Icon = icons[icon];
-        return <article className="service-card" key={id}>
+        return <article className="service-card" data-scroll-reveal key={id}>
           <div className="service-top"><span className="service-icon"><Icon size={24} aria-hidden="true" /></span><button className="icon-button" type="button" aria-label={`Enquire about ${name}`} onClick={() => onBook('', [id])}><ArrowUpRight size={19} aria-hidden="true" /></button></div>
           <h3>{name}</h3><p>{description}</p>
         </article>;
       })}
-      <article className="service-card service-cta">
+      <article className="service-card service-cta" data-scroll-reveal>
         <span className="service-icon"><MessageCircle size={24} aria-hidden="true" /></span>
         <h3>Need a custom setup?</h3>
         <button className="inline-button" type="button" onClick={() => onBook()}>Tell us what you’re planning <ArrowUpRight size={17} aria-hidden="true" /></button>
@@ -72,7 +73,7 @@ function Services({ onBook }) {
 
 function Studio({ onPoster }) {
   return <section className="section container studio" id="studio" aria-labelledby="studio-title">
-    <div className="studio-copy">
+    <div className="studio-copy" data-scroll-reveal>
       <p className="eyebrow">The studio</p>
       <h2 id="studio-title">Come talk it through.</h2>
       <p>Visit us in Bhimavaram to discuss your shoot, venue and production setup.</p>
@@ -80,7 +81,7 @@ function Studio({ onPoster }) {
       <a className="button button-outline" href={studio.directions} target="_blank" rel="noreferrer">Find the nearby landmark <ArrowUpRight size={16} aria-hidden="true" /></a>
     </div>
     <div className="posters">
-      {posters.map((poster) => <button className="poster" type="button" key={poster.title} onClick={() => onPoster(poster)}>
+      {posters.map((poster) => <button className="poster" data-scroll-reveal type="button" key={poster.title} onClick={() => onPoster(poster)}>
         <span className="poster-image"><img src={poster.image} alt="" loading="lazy" /></span>
         <span>{poster.title}<ArrowUpRight size={16} aria-hidden="true" /></span>
       </button>)}
@@ -102,6 +103,7 @@ function Contact({ onBook }) {
 
 export default function App() {
   const { theme, toggleTheme } = useTheme();
+  useScrollReveal();
   const [enquiry, setEnquiry] = useState(null);
   const [poster, setPoster] = useState(null);
   const openEnquiry = (type = '', selected = []) => setEnquiry({ type, services: selected });
@@ -115,7 +117,7 @@ export default function App() {
       <Services onBook={openEnquiry} />
       <section className="section events" id="events" aria-labelledby="events-title">
         <div className="container">
-          <div className="section-heading">
+          <div className="section-heading" data-scroll-reveal>
             <div><p className="eyebrow">Event coverage</p><h2 id="events-title">Every event has a setup.</h2></div>
             <p>Select your event to see a suggested combination of studio and production services.</p>
           </div>

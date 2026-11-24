@@ -45,6 +45,9 @@
   --font-display: 'Space Grotesk Variable', system-ui, sans-serif;
   --container: 86rem;
   --gutter: clamp(1rem, 5vw, 5rem);
+  --scroll-header-offset: 5.25rem;
+  --scroll-reveal-offset: .75rem;
+  --scroll-image-drift: clamp(.5rem, 1vw, .85rem);
   --section-space: clamp(4.25rem, 8vw, 8rem);
   --radius-sm: .75rem;
   --radius-md: 1.15rem;

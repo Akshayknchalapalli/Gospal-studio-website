@@ -3,7 +3,7 @@ import { ArrowUpRight, Play } from 'lucide-react';
 import { studio } from '../content.js';
 
 const scenes = [
-  { id: 'live', label: 'Live production', image: '/media/production.webp', alt: 'Illustration of a live stage being filmed at an evening event' },
+  { id: 'live', label: 'Live production', image: '/media/production.webp', alt: 'Illustration of an audience facing an amber-lit event stage' },
   { id: 'wedding', label: 'Weddings', image: '/media/wedding.webp', alt: 'Illustration of a South Indian wedding reception' },
   { id: 'studio', label: 'Studio', image: '/media/studio.webp', alt: 'Illustration of a professional camera on a studio set' },
 ];
@@ -19,11 +19,11 @@ export default function Hero({ onBook }) {
 
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <div className="container hero-layout">
-        <div className="hero-copy">
-          <h1 id="hero-title">Wedding films and live event production</h1>
-          <p className="hero-location">Bhimavaram, Andhra Pradesh</p>
-          <p className="hero-description">Photography, LED screens, JBL sound, and livestreaming for weddings, church events, and stage shows.</p>
+      <div className="hero-layout">
+        <div className="container hero-copy">
+          <p className="hero-location">Event production in Bhimavaram</p>
+          <h1 id="hero-title">Wedding films. Live events.</h1>
+          <p className="hero-description">Photography, LED screens, JBL sound, and livestreaming for weddings, church gatherings, and stage shows.</p>
           <div className="hero-actions">
             <button className="button button-primary" type="button" onClick={() => onBook()}>{studio.quoteAction} <ArrowUpRight aria-hidden="true" size={19} /></button>
             <a className="button hero-explore" href="#films">Watch real event films <Play aria-hidden="true" size={17} /></a>
@@ -37,7 +37,7 @@ export default function Hero({ onBook }) {
                 width="1536" height="1024" />
             ))}
           </div>
-          <div className="hero-reel">
+          <div className="container hero-reel">
             <div className="showcase-scenes" role="group" aria-label="Preview event and studio coverage">
               {scenes.map(({ id, label }) => (
                 <button key={id} type="button" aria-pressed={id === active} aria-controls="showcase-frame" onClick={() => showScene(id)}>

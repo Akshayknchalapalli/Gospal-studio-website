@@ -21,7 +21,8 @@ export default function Hero({ onBook }) {
     <section className="hero" aria-labelledby="hero-title">
       <div className="container hero-layout">
         <div className="hero-copy">
-          <h1 id="hero-title"><span>Wedding films and live event production</span> <em>in Bhimavaram</em></h1>
+          <h1 id="hero-title">Wedding films and live event production</h1>
+          <p className="hero-location">Bhimavaram, Andhra Pradesh</p>
           <p className="hero-description">Photography, LED screens, JBL sound, and livestreaming for weddings, church events, and stage shows.</p>
           <div className="hero-actions">
             <button className="button button-primary" type="button" onClick={() => onBook()}>{studio.quoteAction} <ArrowUpRight aria-hidden="true" size={19} /></button>
@@ -38,9 +39,8 @@ export default function Hero({ onBook }) {
           </div>
           <div className="hero-reel">
             <div className="showcase-scenes" role="group" aria-label="Preview event and studio coverage">
-              {scenes.map(({ id, label, image }) => (
+              {scenes.map(({ id, label }) => (
                 <button key={id} type="button" aria-pressed={id === active} aria-controls="showcase-frame" onClick={() => showScene(id)}>
-                  <img src={image} alt="" width="64" height="44" />
                   <span>{label}</span>
                 </button>
               ))}

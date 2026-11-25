@@ -1,23 +1,22 @@
 :root {
   color-scheme: light;
   /* Theme and image treatment consume the same palette. */
-  --paper: #f5f3ee;
-  --white: #fffdf7;
-  --stone: #eae5db;
-  --stone-border: #d5cec0;
-  --slate: #555752;
-  --mist: #b5bdc8;
-  --navy-edge: #35404f;
-  --navy-raised: #26303d;
-  --navy-panel: #19212c;
-  --navy: #121923;
-  --midnight: #0b1018;
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --stone: #efefec;
+  --stone-border: #d8d9d6;
+  --slate: #51545a;
+  --mist: #c2c5ca;
+  --navy-edge: #3d424a;
+  --navy-raised: #30353d;
+  --navy-panel: #22262c;
+  --navy: #181b20;
+  --midnight: #101216;
   --amber: #ffba65;
   --amber-light: #ffd097;
   --amber-dark: #874408;
   --image-shade: #080d16c7;
   --hero-edge: #090e17fa;
-  --hero-grid: #fffdf712;
   --overlay: #060a11b8;
   --shadow-color: #0b101820;
 
@@ -40,9 +39,9 @@
   --inverse-muted: var(--mist);
   --inverse-border: var(--navy-edge);
   --button-dark-border: transparent;
-  --chart-capture: var(--amber);
-  --chart-venue: var(--white);
-  --chart-broadcast: var(--mist);
+  --chart-capture: var(--amber-dark);
+  --chart-venue: var(--midnight);
+  --chart-broadcast: var(--slate);
   --transparent: transparent;
 
   --font-sans: 'Geist Variable', system-ui, sans-serif;
@@ -76,4 +75,7 @@
   --accent-text: var(--amber);
   --focus: var(--amber);
   --button-dark-border: var(--navy-edge);
+  --chart-capture: var(--amber);
+  --chart-venue: var(--white);
+  --chart-broadcast: var(--mist);
 }

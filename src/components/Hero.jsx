@@ -19,29 +19,34 @@ export default function Hero({ onBook }) {
 
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <div className="hero-media" id="showcase-frame">
-        {scenes.filter(({ id }) => visited.includes(id)).map(({ id, image, alt }) => (
-          <img key={id} className={id === active ? 'current-scene' : undefined}
-            src={image} alt={alt} aria-hidden={id !== active} fetchPriority={id === 'live' ? 'high' : undefined}
-            width="1536" height="1024" />
-        ))}
-      </div>
       <div className="container hero-layout">
         <div className="hero-copy">
-          <h1 id="hero-title"><span>Wedding films and</span> <span>live event production</span> <em>in Bhimavaram</em></h1>
+          <h1 id="hero-title"><span>Wedding films and live event production</span> <em>in Bhimavaram</em></h1>
           <p className="hero-description">Photography, LED screens, JBL sound, and livestreaming for weddings, church events, and stage shows.</p>
           <div className="hero-actions">
             <button className="button button-primary" type="button" onClick={() => onBook()}>{studio.quoteAction} <ArrowUpRight aria-hidden="true" size={19} /></button>
             <a className="button hero-explore" href="#films">Watch real event films <Play aria-hidden="true" size={17} /></a>
           </div>
         </div>
-        <div className="hero-reel">
-          <div className="showcase-scenes" role="group" aria-label="Preview event and studio coverage">
-            {scenes.map(({ id, label }) => (
-              <button key={id} type="button" aria-pressed={id === active} aria-controls="showcase-frame" onClick={() => showScene(id)}>{label}</button>
+        <div className="hero-visual">
+          <div className="hero-media" id="showcase-frame">
+            {scenes.filter(({ id }) => visited.includes(id)).map(({ id, image, alt }) => (
+              <img key={id} className={id === active ? 'current-scene' : undefined}
+                src={image} alt={alt} aria-hidden={id !== active} fetchPriority={id === 'live' ? 'high' : undefined}
+                width="1536" height="1024" />
             ))}
           </div>
-          <span className="image-credit">Illustrative imagery</span>
+          <div className="hero-reel">
+            <div className="showcase-scenes" role="group" aria-label="Preview event and studio coverage">
+              {scenes.map(({ id, label, image }) => (
+                <button key={id} type="button" aria-pressed={id === active} aria-controls="showcase-frame" onClick={() => showScene(id)}>
+                  <img src={image} alt="" width="64" height="44" />
+                  <span>{label}</span>
+                </button>
+              ))}
+            </div>
+            <span className="image-credit">Illustrative imagery</span>
+          </div>
         </div>
       </div>
     </section>

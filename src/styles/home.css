@@ -6,11 +6,11 @@
   color: var(--text);
   border-bottom: 1px solid var(--border);
 }
-.header-inner { min-height: 4.3rem; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; }
+.header-inner { min-height: 4.3rem; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 1rem; }
 .brand { display: inline-flex; width: fit-content; align-items: center; gap: .65rem; white-space: nowrap; font: 700 1.15rem/1 var(--font-display); }
 .brand img { border-radius: var(--radius-sm); }
 .brand small { display: block; margin-top: .24rem; color: var(--text-muted); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; }
-.navigation { grid-column: 2; grid-row: 1; display: flex; align-items: center; gap: clamp(1.2rem, 3.5vw, 3rem); }
+.navigation { grid-column: 2; grid-row: 1; display: flex; align-items: center; justify-content: center; gap: clamp(1rem, 2.5vw, 2.65rem); }
 .navigation a { color: var(--text-muted); font-weight: 600; font-size: .94rem; transition: color var(--fast); }
 .navigation a:hover { color: var(--text); }
 .header-tools { display: flex; grid-column: 3; grid-row: 1; align-items: center; justify-self: end; gap: .55rem; }
@@ -72,32 +72,42 @@
   .planning ol { grid-template-columns: 1fr; }
 }
 
-.films { padding-block: clamp(2.25rem, 3vw, 3.5rem) clamp(1.25rem, 2vw, 2rem); }
-.films .section-heading { margin-bottom: clamp(1rem, 1.8vw, 1.75rem); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.films { position: relative; margin-top: -1.25rem; padding-block: 0 clamp(1.25rem, 2vw, 2rem); }
 .films + #services { padding-block-start: clamp(1.5rem, 2.5vw, 2.75rem); }
+.coverage-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.65rem, 1.5vw, 1.5rem); padding: 0; margin: 0; list-style: none; }
+.coverage-card { display: flex; flex-direction: column; min-width: 0; background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.coverage-image, .gospel-image { position: relative; overflow: hidden; background: var(--inverse-panel); }
+.coverage-image { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.coverage-image img, .gospel-image img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.coverage-image figcaption, .gospel-image figcaption { position: absolute; bottom: .55rem; left: .55rem; padding: .2rem .5rem; border-radius: var(--radius-sm); color: var(--inverse-text); background: var(--hero-edge); font-size: .8125rem; }
+.coverage-copy { flex: 1; display: flex; flex-direction: column; align-items: start; padding: clamp(.9rem, 2vw, 1.7rem); }
+.coverage-copy h3 { font-size: clamp(1.45rem, 2.35vw, 2.45rem); letter-spacing: -.04em; }
+.coverage-copy p { margin: .55rem 0 .7rem; color: var(--text-muted); }
+.coverage-film-link { display: inline-flex; align-items: center; gap: .6rem; min-height: 2.75rem; color: var(--accent-text); font-weight: 650; }
+.coverage-copy .coverage-film-link { margin-top: auto; border-top: 1px solid var(--border); width: 100%; padding-top: .65rem; }
+.coverage-film-link svg { flex: none; }
+.coverage-film-link small { font-size: .875rem; color: var(--text-muted); }
+.coverage-film-link:hover { text-decoration: underline; text-underline-offset: .2em; }
 
-.film-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
-.film-list li { display: flex; border-bottom: 1px solid var(--border); }
-.film-list a { flex: 1; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(.7rem, 2vw, 1.55rem); padding: 1rem .25rem; }
-.film-list a:hover strong { color: var(--accent-text); }
-.film-icon { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: var(--radius-pill); color: var(--accent-text); }
-.film-list small, .film-list strong, .film-description { display: block; }
-.film-list small { color: var(--accent-text); font-weight: 800; }
-.film-list strong { font: 650 clamp(1.15rem, 2.5vw, 1.8rem)/1.2 var(--font-display); }
-.film-description { margin-top: .25rem; color: var(--text-muted); max-width: var(--copy-measure); }
-.film-platform { display: inline-flex; align-items: center; gap: .4rem; font-size: .875rem; font-weight: 750; }
-@media (max-width: 530px) {
-  .film-list a { grid-template-columns: auto minmax(0, 1fr); }
-  .film-platform { grid-column: 2; }
+.gospel-feature { padding-block: clamp(2rem, 4.5vw, 5rem); background: var(--surface-muted); }
+.gospel-inner { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center; gap: clamp(1.5rem, 5vw, 5.5rem); }
+.gospel-image { border-radius: var(--radius-lg); }
+.gospel-brand { width: clamp(4rem, 6vw, 6.5rem); height: auto; aspect-ratio: 1; margin-bottom: .8rem; }
+.gospel-copy h2 { font-size: clamp(2.25rem, 4.3vw, 4.75rem); text-wrap: balance; }
+.gospel-copy p { margin-top: .7rem; max-width: 53ch; color: var(--text-muted); }
+.gospel-booking { font-size: .9375rem; }
+.gospel-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; margin-top: 1.05rem; }
+
+@media (max-width: 735px) {
+  .films { margin-top: 0; padding-top: .8rem; }
+  .coverage-cards, .gospel-inner { grid-template-columns: minmax(0, 1fr); }
+  .coverage-card { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); }
+  .coverage-image { border-radius: var(--radius-lg) 0 0 var(--radius-lg); }
+  .coverage-image img { height: 100%; }
 }
-
-.film-list a:focus-visible { outline-offset: 0; }
-@media (min-width: 960px) {
-  .film-list { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 0 1.6rem; border-top: 0; }
-  .film-list li { border: 0; border-top: 1px solid var(--border); }
-  .film-list li:first-child { grid-row: span 2; background: var(--surface-muted); border: 0; border-radius: var(--radius-lg); }
-  .film-list li:first-child a { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr auto; padding: clamp(1.15rem, 2.6vw, 2.8rem); gap: .75rem; }
-  .film-list li:first-child strong { font-size: clamp(1.6rem, 3.4vw, 3.6rem); letter-spacing: -.04em; }
-  .film-list li:first-child .film-platform { grid-column: 1; }
-  .film-list li:first-child .film-icon { justify-items: start; width: 2.4rem; height: 2.4rem; }
+@media (max-width: 435px) {
+  .coverage-card { display: flex; }
+  .coverage-image { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+  .coverage-image img { height: auto; }
 }

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, CalendarDays, ClipboardList, FileImage, MapPin, Menu, MessageCircle, Moon, Phone, Play, SlidersHorizontal, Sun, X } from 'lucide-react';
-import { films, posters, studio } from './content.js';
+import { events, films, posters, services, studio } from './content.js';
 import Dialog from './components/Dialog.jsx';
 import Enquiry from './components/Enquiry.jsx';
 import EventExplorer from './components/EventExplorer.jsx';
@@ -9,7 +9,7 @@ import Capabilities from './components/Capabilities.jsx';
 import { useTheme } from './useTheme.js';
 import { useScrollReveal } from './useScrollReveal.js';
 
-const links = [['services', 'Services'], ['events', 'Events'], ['studio', 'Studio'], ['contact', 'Contact']];
+const links = [['services', 'Services'], ['events', 'Events'], ['gospel', 'Gospel Media'], ['studio', 'Studio'], ['contact', 'Contact']];
 
 
 function Brand() {
@@ -119,23 +119,61 @@ function Studio({ onPoster }) {
   </section>;
 }
 
+const coverageCards = [
+  { id: 'wedding', serviceIds: ['photo', 'film', 'drone'] },
+  { id: 'gospel', serviceIds: ['stream', 'mix', 'sound'] },
+  { id: 'stage', serviceIds: ['led', 'sound', 'stream'] },
+].map(({ id, serviceIds }) => ({
+  event: events.find((event) => event.id === id),
+  film: films.find(({ event }) => event === id),
+  services: serviceIds.map((serviceId) => services.find(({ id }) => id === serviceId).name),
+}));
+
 function Films() {
   return <section className="films section container" id="films" aria-labelledby="films-title">
-    <div className="section-heading" data-scroll-reveal>
-      <div><p className="eyebrow">Published work</p><h2 id="films-title">Real event films</h2></div>
-      <p>Watch examples from the Suresh Live Media’s YouTube channel.</p>
-    </div>
-    <ul className="film-list">
-      {films.map(({ event, title, kind, description, url }) => (
-        <li key={event} data-scroll-reveal>
-          <a href={url} target="_blank" rel="noreferrer">
-            <span className="film-icon"><Play size={20} aria-hidden="true" /></span>
-            <span><small>{kind}</small><strong>{title}</strong><span className="film-description">{description}</span></span>
-            <span className="film-platform">YouTube <ArrowUpRight size={16} aria-hidden="true" /></span>
-          </a>
+    <h2 id="films-title" className="visually-hidden">Real event films</h2>
+    <ul className="coverage-cards">
+      {coverageCards.map(({ event, film, services }) => (
+        <li className="coverage-card" key={event.id}>
+          <figure className="coverage-image">
+            <img src={event.image} alt={event.alt} width="1000" height="750" loading="lazy" />
+            <figcaption>Illustrative imagery</figcaption>
+          </figure>
+          <div className="coverage-copy">
+            <h3>{event.tab}</h3>
+            <p>{services.join(' · ')}</p>
+            <a className="coverage-film-link" href={film.url} target="_blank" rel="noreferrer">
+              <Play size={18} aria-hidden="true" /> <span>Watch {film.title} <small>on YouTube</small></span>
+            </a>
+          </div>
         </li>
       ))}
     </ul>
+  </section>;
+}
+
+function GospelMedia({ onBook }) {
+  const { event, film } = coverageCards.find(({ event }) => event.id === 'gospel');
+
+  return <section className="gospel-feature" id="gospel" aria-labelledby="gospel-title">
+    <div className="container gospel-inner">
+      <figure className="gospel-image">
+        <img src={event.image} alt={event.alt} width="1000" height="750" loading="lazy" />
+        <figcaption>Illustrative imagery</figcaption>
+      </figure>
+      <div className="gospel-copy" data-scroll-reveal>
+        <img className="gospel-brand" src={event.logo.src} alt="" width="120" height="120" loading="lazy" />
+        <h2 id="gospel-title">Gospel Media Service</h2>
+        <p>Church livestreaming, multi-camera production and sound for worship services, Christian weddings and gospel gatherings in Bhimavaram.</p>
+        <p className="gospel-booking">Church and gospel bookings use the Suresh Live Medias booking number.</p>
+        <div className="gospel-actions">
+          <button className="button button-primary" type="button" onClick={() => onBook(event.type, event.services)}>{studio.quoteAction}</button>
+          <a className="coverage-film-link" href={film.url} target="_blank" rel="noreferrer">
+            <Play size={18} aria-hidden="true" /> Watch the Holy Lutheran Church recording
+          </a>
+        </div>
+      </div>
+    </div>
   </section>;
 }
 
@@ -176,6 +214,7 @@ export default function App() {
           <EventExplorer onBook={openEnquiry} />
         </div>
       </section>
+      <GospelMedia onBook={openEnquiry} />
       <Planning />
       <Studio onPoster={setPoster} />
       <Contact onBook={openEnquiry} />
